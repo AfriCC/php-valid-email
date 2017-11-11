@@ -16,7 +16,11 @@ class ValidEmailTest extends TestCase
 
     public function testUtf8Local()
     {
-        $this->assertTrue(AfriCC\Valid\email('günter@afri.cc'));
+        if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
+            $this->assertTrue(AfriCC\Valid\email('günter@afri.cc'));
+        } else {
+            $this->assertFalse(AfriCC\Valid\email('günter@afri.cc'));
+        }
     }
 
     public function testUtf8Domain()
