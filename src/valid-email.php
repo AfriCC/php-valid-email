@@ -20,5 +20,11 @@ function email($string)
 
     $ascii_email = substr($string, 0, $pos) . '@' . idn_to_ascii(substr($string, $pos + 1), 0, INTL_IDNA_VARIANT_2003);
 
-    return filter_var($ascii_email, FILTER_VALIDATE_EMAIL);
+    if (version_compare(PHP_VERSION, '7.1.0', '>=')) {
+        $flags = FILTER_FLAG_EMAIL_UNICODE;
+    } else {
+        $flags = null;
+    }
+
+    return (bool) filter_var($ascii_email, FILTER_VALIDATE_EMAIL, $flags);
 }
