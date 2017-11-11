@@ -1,0 +1,24 @@
+{
+    "name": "africc/valid-email",
+    "description": "A simple email validator",
+    "keywords": ["validator", "email"],
+    "homepage": "https://github.com/AfriCC/php-valid-email",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AfriCC",
+            "email": "hello@afri.cc",
+            "homepage": "https://afri.cc"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "ext-intl": "*"
+    },
+    "require-dev": {
+        "satooshi/php-coveralls": "^1.0"
+    },
+    "autoload": {
+        "files": ["src/valid-email.php"]
+    }
+}
